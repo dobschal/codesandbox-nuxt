@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-     <Header></Header>
+    <Header></Header>
     <Nuxt/>
     <client-only>
       <CookieLaw theme="dark-lime">
@@ -12,17 +12,18 @@
         </div>
       </CookieLaw>
     </client-only>
-     <Footer></Footer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-   import Header from "@/components/admin/AdminHeader"
-   import Footer from "@/components/admin/AdminFooter"
+import Header from "@/components/admin/AdminHeader";
+import Footer from "@/components/admin/AdminFooter";
 export default {
   name: "Admin",
   components: {
-     Header, Footer,
+    Header,
+    Footer,
     CookieLaw: async () => {
       /* eslint-disable */
       if (process.client) return (await import("vue-cookie-law")).default;
@@ -38,7 +39,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 /****** Elad Shechter's RESET *******/
 /*** box sizing border-box for all elements ***/
 *,
