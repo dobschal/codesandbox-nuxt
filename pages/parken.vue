@@ -216,7 +216,7 @@
                      case error.POSITION_UNAVAILABLE:
                         return this.$toasted.show("Leider konnten wir deine Koordinaten nicht abrufen.");
                      default:
-                        return this.$toasted.show(`Ein unerwarteter Fehler ist aufgetreten. (Fehlercode: ${error.code})`);
+                        return this.$toasted.show(`Ein unerwarteter Fehler ist aufgetreten.`);
                   }
                });
             } else {
