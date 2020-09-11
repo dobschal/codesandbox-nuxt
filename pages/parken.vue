@@ -211,8 +211,10 @@
                   });
                }, (error) => {
                   switch (error.code) {
-                     case 1:
+                     case error.PERMISSION_DENIED:
                         return this.$toasted.show("Bitte gib uns die Erlaubnis auf deine GPS-Daten zuzugreifen.");
+                     case error.POSITION_UNAVAILABLE:
+                        return this.$toasted.show("Leider konnten wir deine Koordinaten nicht abrufen.");
                      default:
                         return this.$toasted.show(`Ein unerwarteter Fehler ist aufgetreten. (Fehlercode: ${error.code})`);
                   }
