@@ -71,8 +71,9 @@
           <div class="navi">
             <a href="#">Feedback</a>
             <nuxt-link to="/imprint">Impressum & Datenschutz</nuxt-link>
-            <a href="/legal?id=Heylocal-Nutzungsbedingungen">Nutzungsbedingungen</a>
+            <a target="_blank" href="/legal?id=Heylocal-Nutzungsbedingungen">Nutzungsbedingungen</a>
           </div>
+          <div class="version">version: {{ version }}</div>
         </div>
       </div>
     </div>
@@ -90,8 +91,8 @@
           </span>
         </button>
         <div class="modal-content" v-if="selectedCoupon.active">
-          <h3>Gutschein aktivieren</h3>
-          <p>Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern.</p>
+          <h3>{{ selectedCoupon.popUp && selectedCoupon.popUp.title ? selectedCoupon.popUp.title : 'Gutschein aktivieren' }}</h3>
+          <p>{{ selectedCoupon.popUp && selectedCoupon.popUp.text ? selectedCoupon.popUp.text : 'Sichere dir jetzt diesen Gutschein und löse ihn vor Ort im Geschäft ein. Nach dem Einlösen kannst du dir einen neuen Gutschein sichern.' }}</p>
           <button
             id="modal-primary-button"
             :class="{ loading: activatingCoupon }"
@@ -117,6 +118,7 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 import cookieparser from "cookieparser";
+import { version } from "../package.json";
 
 export default {
   middleware: "hasNoActiveCoupon",
@@ -125,7 +127,8 @@ export default {
       selectedCoupon: undefined,
       showModal: false,
       error: undefined,
-      activatingCoupon: false
+      activatingCoupon: false,
+      version: version
     };
   },
   async asyncData({ params, req }) {
@@ -213,9 +216,9 @@ export default {
     },
     activateCoupon(coupon) {
       this.activatingCoupon = true;
-      Cookie.set("active_coupon_id", coupon.id, { expires: 1 /* days */ });
-      Cookie.set("active_coupon_expiry", Date.now() + 1000 * 60 * 60 * 24, {
-        expires: 1 /* days */
+      Cookie.set("active_coupon_id", coupon.id, { expires: 3 /* days */ });
+      Cookie.set("active_coupon_expiry", Date.now() + 1000, {
+        expires: 3 /* days */
       });
       this.$ga.event("coupon", "activate", coupon.id, 1);
       this.$router.push("/submit");

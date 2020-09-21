@@ -46,7 +46,7 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/vue2-gmap.js"],
+  plugins: [ {src: "@/plugins/vue2-gmap.js"}, {src: "@/plugins/vue-toasted.js", mode: "client"}],
 
   /*
    ** Nuxt.js modules
@@ -97,6 +97,7 @@ export default {
     }),
     { path: "/api/logger", handler: "~/api/logger.js" },
     { path: "/api/coupons", handler: "~/api/coupons.js" },
+    { path: "/api/coupon", handler: "~/api/getCoupon.js" },
     { path: "/api/admin-coupons", handler: "~/api/adminCoupons.js" },
     { path: "/api/update-coupon", handler: "~/api/updateCoupon.js" },
     { path: "/api/login", handler: "~/api/login.js" },
