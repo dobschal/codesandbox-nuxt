@@ -97,6 +97,7 @@ export default {
     }),
     { path: "/api/logger", handler: "~/api/logger.js" },
     { path: "/api/coupons", handler: "~/api/coupons.js" },
+    { path: "/api/coupon", handler: "~/api/getCoupon.js" },
     { path: "/api/admin-coupons", handler: "~/api/adminCoupons.js" },
     { path: "/api/update-coupon", handler: "~/api/updateCoupon.js" },
     { path: "/api/login", handler: "~/api/login.js" },
