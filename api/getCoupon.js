@@ -6,6 +6,12 @@ export default async function (req, res, next) {
   const coupons = await filesystem.getAll("coupon");
   const query = url.parse(req.url, true).query;
   const coupon = coupons.find((c) => c.id === query.id);
+  if (coupon === undefined) {
+     return jsonResponse(res, {
+        coupon: {
+        }
+     });
+  }
   jsonResponse(res, {
     coupon: {
       id: coupon.id,
