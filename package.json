@@ -5,7 +5,7 @@
   "author": "Nuxt.js Team",
   "private": true,
   "scripts": {
-    "dev": "MINIMAL=1 CSB=1 nuxt",
+    "dev": "MINIMAL=1 CSB=1 HOST=0.0.0.0 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -23,6 +23,7 @@
     "js-cookie": "2.2.1",
     "js-sha1": "0.6.0",
     "ky-universal": "0.8.1",
+    "material-design-icons": "^3.0.1",
     "nuxt": "^2.12.2",
     "redirect-ssl": "^2.0.0",
     "reqlim": "0.0.0",
